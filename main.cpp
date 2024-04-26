@@ -223,7 +223,17 @@ int main(void)
         
         m.lock();
         r = abs(phi_deg/90.0);
+        if (r < 0.055)
+        {
+            r = 0;
+        }
+
         p = abs(theta_deg/90.0);
+        if (p < 0.055)
+        {
+            p = 0;
+
+        }
         m.unlock();
 
         snprintf(data_to_send, sizeof(data_to_send), "%.2f,%.2f\n", phi_deg, theta_deg);
